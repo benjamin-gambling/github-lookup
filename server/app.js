@@ -43,6 +43,7 @@ const server = new ApolloServer({
   resolvers,
 });
 
+const app = express();
 server.applyMiddleware({ app });
 
 app.use(express.static(path.resolve(__dirname, "../client/build")));
@@ -56,6 +57,6 @@ app.get("*", (req, res) =>
   res.sendFile(path.resolve(__dirname, "../client/build", "index.html"))
 );
 
-app.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+app.listen({ port: process.env.PORT || 4000 }, () => {
+  console.log(`🚀 Server ready at ${process.env.PORT || 4000}`);
 });
