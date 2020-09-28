@@ -8,7 +8,7 @@ import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 
 const client = new ApolloClient({
-  uri: `http://localhost:4000/`,
+  uri: `https://bgwd-github-lookup.herokuapp.com/`,
 });
 
 ReactDOM.render(
