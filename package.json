@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node server",
+    "build": "cd react-ui/ && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.18.1",
+    "apollo-server-express": "^2.18.1",
     "axios": "^0.20.0",
     "graphql": "^15.3.0"
   },
