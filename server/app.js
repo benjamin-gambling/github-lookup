@@ -1,3 +1,5 @@
+const express = require("express");
+const path = require("path");
 const { ApolloServer, gql } = require("apollo-server-express");
 const axios = require("axios");
 
@@ -42,6 +44,8 @@ const server = new ApolloServer({
 });
 
 server.applyMiddleware({ app });
+
+app.use(server.express.static(path.resolve(__dirname, "../client/build")));
 
 app.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
