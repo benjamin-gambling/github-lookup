@@ -45,7 +45,16 @@ const server = new ApolloServer({
 
 server.applyMiddleware({ app });
 
-app.use(server.express.static(path.resolve(__dirname, "../client/build")));
+app.use(express.static(path.resolve(__dirname, "../client/build")));
+
+app.get("/ben", (req, res) => {
+  res.set("Content-Type", "application/json");
+  res.send('{"message":"Hello from Ben!"}');
+});
+
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"))
+);
 
 app.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
